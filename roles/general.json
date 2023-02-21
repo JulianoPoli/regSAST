@@ -1,0 +1,16 @@
+[
+    {
+        "Vuln_name":"Hard Coded Credentials",
+        "CWE":"CWE-798",
+        "CVE":"None",
+        "Score":"9.2",
+        "Regex":"^(.*key[=:].{3}[a-zA-Z0-9].{8})|(.*pass[=:].{3}[a-zA-Z0-9].{8})|(.*password[=:].{3}[a-zA-Z0-9].{8})|(.*credential[=:].{3}[a-zA-Z0-9].{8})|(.*secret[=:].{3}[a-zA-Z0-9].{8})|(.*credentials[=:].{3}[a-zA-Z0-9].{8})|(.*token[=:].{3}[a-zA-Z0-9].{8})|(.*pwd[=:].{3}[a-zA-Z0-9].{8})|(.*senha[=:].{3}[a-zA-Z0-9].{8})$"
+    },
+    {
+        "Vuln_name":"Hard Coded Credentials",
+        "CWE":"CWE-798",
+        "CVE":"None",
+        "Score":"9.2",
+        "Regex":"^(.*Key[=:].{3}[a-zA-Z0-9].{8})|(.*Pass[=:].{3}[a-zA-Z0-9].{8})|(.*Password[=:].{3}[a-zA-Z0-9].{8})|(.*Credential[=:].{3}[a-zA-Z0-9].{8})|(.*Secret[=:].{3}[a-zA-Z0-9].{8})|(.*Credentials[=:].{3}[a-zA-Z0-9].{8})|(.*Token[=:].{3}[a-zA-Z0-9].{8})|(.*Pwd[=:].{3}[a-zA-Z0-9].{8})|(.*Senha[=:].{3}[a-zA-Z0-9].{8})$"
+    }
+]
