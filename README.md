@@ -5,7 +5,7 @@ Regex-based vulnerability scanning
 
 - Simple implementation of new regex
 - Scan all files type
-- JSON Report (dev)
+- JSON Report
 
 ### How Use
 
@@ -18,7 +18,7 @@ Exemple: python3 regSast.py myProject/src
 
 ### Bypass formats
 
-É possível ignorar arquivos por sua extensão. Para isso, basta adicionar o formato que deseja ignorar no array BYPASS_EXT
+It is possible to ignore files by their extension. For that, just add the format you want to ignore in the BYPASS_EXT array
 ```sh
 #Ignore file types
 BYPASS_EXT = ["jpg","png","xml","gitignore","pdf", "js", "yml"]

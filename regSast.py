@@ -56,16 +56,35 @@ def path_filter():
                 select_elegivel_path.append(os.path.join(p, file_name))
     return select_elegivel_path
 
+class Report():
+    def __init__(self, severity, title, line, file_path, description, cweid, cveid):
+        self.title = str(title)
+        self.cwe = str(cweid)
+        self.cve = str(cveid)
+        self.severity = severity
+        self.line = int(line+1)
+        self.file_path = str(file_path)
+        self.description = str(description)
+
+def report_generic():
+    global bad_score
+    report = list()
+    for finding in FINDINGS:
+        report_object = Report(finding[3], finding[0], finding[6], {finding[5]}, {finding[4]}, {finding[1]}, {finding[2]})
+        report.append(report_object.__dict__)
+        final_report = {"findings": report}
+        bad_score += float(finding[3])
+    
+    f = open('generic_report.json', 'w')
+    f.write(json.dumps(final_report, indent=4))
+    f.close()
+
 select_elegivel_path = path_filter()
 for i in select_elegivel_path:
     file_full = read_file(i)
     regex_run_analisy(file_full, i)
 
-for finding in FINDINGS:
-    print(f"[!] Find item: {finding[0]} - {finding[1]}")
-    print(f"--> Info: {finding[4]}"[0:250]+"...")
-    print(f"--> Line: {finding[6]}")
-    print(f"--> Path: {finding[5]}\n")
-    bad_score += float(finding[3])
-print(f"[!] Finding {len(FINDINGS)} in {len(select_elegivel_path)} Paths")
-print(f"[!] Project Bad Score: {int(bad_score)}")
+report_generic()
+
+print("="*38 + f"\n[!] Finding {len(FINDINGS)} itens in {len(select_elegivel_path)} Paths")
+print(f"[!] Project Bad Score: {int(bad_score)}\n"+"="*38)
