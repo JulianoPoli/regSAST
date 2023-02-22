@@ -25,7 +25,14 @@ def regex_run_analisy(file_full, path_report):
         file_line_filter = file_full[cont].replace('\n', '')
         cont_regex = 0
         while cont_regex < len(role_dict):
-            result = re.match(f'{role_dict[cont_regex]["Regex"]}', file_line_filter)
+            regex = role_dict[cont_regex]["Regex"]
+            try:
+                re.compile(regex)
+ 
+            except re.error:
+                print(f"Non valid regex pattern: {regex}")
+                exit()
+            result = re.match(regex, file_line_filter)
             if result != None:
                 FINDINGS.append([
                     role_dict[cont_regex]["Vuln_name"],
